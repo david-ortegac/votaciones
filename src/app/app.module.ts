@@ -6,7 +6,6 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
 
 //firebase
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -22,7 +21,6 @@ import { AuthGuardModule } from '@angular/fire/auth-guard';
     IonicModule.forRoot(),
     AppRoutingModule,
     AuthGuardModule,
-    ReactiveFormsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideDatabase(() => getDatabase())

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
-import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -13,10 +13,10 @@ export class RegisterPage implements OnInit {
   passwordValidMessage: boolean = false;
   loginError: boolean = false;
 
-  form = this.formBuilder.group({
-    email: ['', [Validators.email, Validators.required]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
-    confirmPassword: ['', [Validators.required, Validators.minLength(8)]],
+  form = new FormGroup({
+    email: new FormControl('', [Validators.email, Validators.required]),
+    password: new FormControl ('', [Validators.required, Validators.minLength(8)]),
+    confirmPassword: new FormControl ('', [Validators.required, Validators.minLength(8)]),
   });
 
   constructor(
