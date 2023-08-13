@@ -1,0 +1,5 @@
+sonar-scanner \
+  -Dsonar.projectKey=votaapp \
+  -Dsonar.sources=. \
+  -Dsonar.host.url=http://localhost:9000 \
+  -Dsonar.token=sqp_ff449c6e29e9c728052421a5d9b4e08110c43c3e
