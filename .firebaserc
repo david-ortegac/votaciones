@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "votaciones-6558f"
+  },
+  "targets": {
+    "votaciones-6558f": {
+      "hosting": {
+        "app": [
+          "votaciones-florida-cuatro"
+        ]
+      }
+    }
   }
 }

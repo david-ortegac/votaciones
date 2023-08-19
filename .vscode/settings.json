@@ -1,6 +1,6 @@
 {
     "sonarlint.connectedMode.project": {
-        "connectionId": "votaapp",
-        "projectKey": "prueba"
+        "connectionId": "prueba-votaapp",
+        "projectKey": "sqp_2030aae34fd714b3b5104996ec28f4351ba3acf3"
     }
 }

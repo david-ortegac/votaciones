@@ -5,34 +5,39 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <form [formGroup]="form" novalidate>
-    <ion-grid>
-      <ion-col>
-        <ion-input fill="outline" formControlName="email" label="Correo" labelPlacement="floating"
-          placeholder="Ingrese su correo"></ion-input>
-      </ion-col>
-      <ion-col>
-        <ion-input fill="outline" formControlName="password" type="password" label="Contraseña"
-          labelPlacement="floating" placeholder="Ingrese su contraseña"></ion-input>
-      </ion-col>
-
-      <ion-row style="text-align: center;">
-        <label class="text-danger" *ngIf="loginError">
-          Error al iniciar.
-        </label>
-      </ion-row>
-
-      <ion-row>
-        <ion-col>
-          <ion-button [disabled]="!form.valid" type="submit" (click)="login()" id="loading"
-            expand="block">Ingresar</ion-button>
-        </ion-col>
-        <ion-col>
-          <ion-button routerLink="/register" type="button" expand="block">Registro</ion-button>
-        </ion-col>
-      </ion-row>
-      <ion-loading trigger="loading" message="Un momento por favor" duration="1200"></ion-loading>
-
-    </ion-grid>
-  </form>
+  <ion-grid fixed>
+    <ion-row>
+      <form [formGroup]="form" novalidate>
+        <ion-grid>
+          <ion-col>
+            <ion-input fill="outline" formControlName="email" label="Correo" labelPlacement="floating"
+              placeholder="Ingrese su correo"></ion-input>
+          </ion-col>
+          <ion-col>
+            <ion-input fill="outline" formControlName="password" type="password" label="Contraseña" labelPlacement="floating"
+              placeholder="Ingrese su contraseña"></ion-input>
+          </ion-col>
+      
+          <ion-row style="text-align: center;">
+            <label class="text-danger" *ngIf="loginError">
+              Error al iniciar.
+            </label>
+          </ion-row>
+      
+          <ion-row>
+            <ion-col>
+              <ion-button [disabled]="!form.valid" type="submit" (click)="login()" id="loading"
+                expand="block">Ingresar</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button routerLink="/register" type="button" expand="block">Registro</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-loading trigger="loading" message="Un momento por favor" duration="1200"></ion-loading>
+      
+        </ion-grid>
+      </form>
+    </ion-row>
+  </ion-grid>
+  
 </ion-content>

@@ -10,22 +10,29 @@ import { filter } from 'rxjs/operators'
 })
 export class AppComponent {
   public appPages = [
-    { title: 'Inbox', url: '/folder/inbox', icon: 'mail' },
-    { title: 'Outbox', url: '/folder/outbox', icon: 'paper-plane' },
-    { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
-    { title: 'Archived', url: '/folder/archived', icon: 'archive' },
-    { title: 'Trash', url: '/folder/trash', icon: 'trash' },
-    { title: 'Spam', url: '/folder/spam', icon: 'warning' },
+    { title: 'quorum', url: '/quorum', icon: 'finger-print' },
+    { title: 'Votaciones', url: '/folder/outbox', icon: 'podium' },
+    // { title: 'Favorites', url: '/folder/favorites', icon: 'heart' },
+    // { title: 'Archived', url: '/folder/archived', icon: 'archive' },
+    // { title: 'Trash', url: '/folder/trash', icon: 'trash' },
+    // { title: 'Spam', url: '/folder/spam', icon: 'warning' },
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  
   constructor(
     private authService: AuthService,
     private router: Router
-  ) { }
+  ) {
+   }
 
   user$ = this.authService.authSession$.pipe(
     filter(state => !!state)
   );
+
+  async data() {
+    let data;
+    data = await this.authService.authSession$
+    console.log(data)
+  }
 
   async logout() {
     await this.authService.logout()

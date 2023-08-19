@@ -1,7 +1,7 @@
 import { Owners } from "./owners";
 
 export class Apartment {
-    id?: number;
+    id?: string;
     towel?: number;
     apartment?: number;
     status?: boolean;

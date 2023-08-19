@@ -1,5 +1,5 @@
 export class Owners {
-    id?: number;
+    id?: string;
     name?: string;
     celular?: number;
 }
