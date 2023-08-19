@@ -1,23 +1,51 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>Quorum</ion-title>
+    <ion-title style="text-align: center;">Ingresar a Votaciones Florida 4</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">{{ data }}</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-grid fixed>
 
+  </ion-grid>
   <div id="container">
-    <strong class="capitalize">{{ data }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI
-        Components</a></p>
+    <form [formGroup]="form" novalidate>
+      <ion-grid>
+        <ion-col>
+          <ion-input fill="outline" formControlName="apartment" label="Torre y Apartamento" labelPlacement="floating"
+            placeholder="Digite torre y apartamento"></ion-input>
+        </ion-col>
+    
+        <ion-row style="text-align: center;">
+          <label class="text-danger" *ngIf="saveError">
+            Error al guardar el registro, vuelva a registrar.
+          </label>
+        </ion-row>
+    
+        <ion-row>
+          <ion-col>
+            <ion-button [disabled]="!form.valid" type="submit" (click)="register()" id="loading"
+              expand="block">Ingresar</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-loading trigger="loading" message="Un momento por favor" duration="500"></ion-loading>
+    
+      </ion-grid>
+    </form>
+
+    <ion-grid fixed>
+      <ion-row>
+        {{ quorums.length }}
+      </ion-row>
+      <ion-row>
+        <ul>
+          <li *ngFor="let item of quorums">
+            {{ item.apartment }}
+          </li>
+        </ul>
+      </ion-row>
+    </ion-grid>
+
   </div>
 </ion-content>
 

@@ -11,10 +11,6 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then(m => m.FolderPageModule)
-  },
-  {
     path: 'login',
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectLoggedIntoHome },
@@ -37,7 +33,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { authGuardPipe: redirectUnauthorizedToLogin },
     loadChildren: () => import('./quorum/quorum.module').then( m => m.QuorumPageModule)
+  },
+  {
+    path: 'votaciones',
+    canActivate: [AuthGuard],
+    data: { authGuardPipe: redirectUnauthorizedToLogin },
+    loadChildren: () => import('./votaciones/votaciones.module').then( m => m.VotacionesPageModule)
   }
+
 ];
 
 @NgModule({

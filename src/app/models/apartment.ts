@@ -1,6 +1,6 @@
-import { Owners } from "./owners";
+import Owners from "./owners";
 
-export class Apartment {
+export default interface Apartment {
     id?: string;
     towel?: number;
     apartment?: number;

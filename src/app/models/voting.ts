@@ -1,8 +1,8 @@
-import { Questions } from './questions';
+import  Questions  from './questions';
 import { Time } from "@angular/common";
-import { Apartment } from "./apartment";
+import  Apartment  from "./apartment";
 
-export class Voting {
+export default interface Voting {
     id?: string;
     apartment?: Apartment;
     questions?: Questions;

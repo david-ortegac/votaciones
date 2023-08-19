@@ -1,30 +1,38 @@
-import { Quorum } from './../models/quorum';
-import { Injectable, inject } from '@angular/core';
-import { Firestore, collectionData, collection } from '@angular/fire/firestore';
+import {Quorum} from './../models/quorum';
+import { Injectable } from '@angular/core';
+import {
+  CollectionReference,
+  DocumentData,
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  updateDoc,
+} from '@firebase/firestore';
+import { Firestore, collectionData, docData } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class QuorumService {
-  
-  private firestore: Firestore = inject(Firestore); // inject Cloud Firestore
-  quorum$: Observable<Quorum[]>;
 
-  constructor() { 
-    // get a reference to the user-profile collection
-    const quorumCollection = collection(this.firestore, 'quorum');
+  private quorumRef: CollectionReference<DocumentData>;
+  q: Quorum = new Quorum;
 
-    // get documents (data) from the collection using collectionData
-    this.quorum$ = collectionData(quorumCollection) as Observable<Quorum[]>;
+  constructor(private readonly firestore: Firestore) {
+    this.quorumRef = collection(this.firestore, 'quorum');
+   }
+
+  allQuorum(): Observable<Quorum[]> {
+    return collectionData(this.quorumRef, { idField: 'id' }) as Observable<Quorum[]>;
   }
 
-  allQuorum() {
-    return this.quorum$;
-  }
-
-  async createRegister(persona: Quorum) {
-    return null;
+  createRegister(person: Quorum) {
+    this.q.apartment = "123"
+    return addDoc(this.quorumRef, {
+      apartment: person.apartment
+    });
   }
 
 }

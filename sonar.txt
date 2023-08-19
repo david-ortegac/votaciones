@@ -1,5 +1,1 @@
-sonar-scanner \
-  -Dsonar.projectKey=votaapp \
-  -Dsonar.sources=. \
-  -Dsonar.host.url=http://localhost:9000 \
-  -Dsonar.token=sqp_ff449c6e29e9c728052421a5d9b4e08110c43c3e
+sonar-scanner.bat -D"sonar.projectKey=votaapp" -D"sonar.sources=." -D"sonar.host.url=http://localhost:9000" -D"sonar.token=sqp_f939c9c31d1164eac4d19d18b0b7c4f7e5f6e84a"

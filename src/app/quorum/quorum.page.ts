@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuorumService } from '../services/quorum.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Quorum } from '../models/quorum';
-import { AngularFireList } from '@angular/fire/compat/database';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-quorum',
@@ -11,14 +10,44 @@ import { map } from 'rxjs';
 })
 export class QuorumPage implements OnInit {
 
-  data:any
+  loading: boolean = false;
+  saveError: boolean = false;
+  quorum: Quorum;
+  quorums: Quorum[];
+
+  form: FormGroup;
 
   constructor(
     private quorumService: QuorumService
-  ) { }
+  ) {
+    this.form = new FormGroup({
+      apartment: new FormControl('', [Validators.required])
+    })
+    this.quorum = new Quorum;
+    this.quorums = new Array<Quorum>;
+  }
 
-  ngOnInit() {
-    this.quorumService.allQuorum();
+  ngOnInit(): void {
+    this.getAllData();
+  }
+
+  async register() {
+    if (this.form.valid) {
+      this.loading = true;
+      this.quorum.apartment = this.form.get('apartment')?.value;
+      const response = this.quorumService.createRegister(this.quorum);
+      console.log(response);
+    } else {
+      this.form.markAllAsTouched();
+    }
+
+    this.loading = false;
+  }
+
+  async getAllData() {
+    await this.quorumService.allQuorum().subscribe(res => {
+      this.quorums = res;
+    })
   }
 
 }

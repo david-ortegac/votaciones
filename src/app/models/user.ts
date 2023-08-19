@@ -1,6 +1,6 @@
-import { Rol } from "./rol";
+import Rol from "./rol";
 
-export class User {
+export default interface User {
     id?: string;
     name?: string;
     email?: string;

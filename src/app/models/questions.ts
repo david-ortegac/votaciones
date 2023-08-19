@@ -1,4 +1,4 @@
-export class Questions {
+export default interface Questions {
     id?: number;
     description?: string;
 }
